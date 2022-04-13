@@ -1,30 +1,36 @@
-const { Sequelize } = require("sequelize");
+const mongoose = require("mongoose");
 
-const sequelize = require("../database/database");
-
-const Register = sequelize.define("Register", {
+const RegisterSchema = new mongoose.Schema({
   id: {
-    type: Sequelize.INTEGER,
+    type: Number,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
   firstname: {
-    type: Sequelize.STRING,
-    unique: true,
+    type: String,
+    allowNull: true,
   },
   lastname: {
-    type: Sequelize.STRING,
-    unique: true,
+    type: String,
+    allowNull: true,
   },
   email: {
-    type: Sequelize.STRING,
-    unique: true,
+    type: String,
+    allowNull: true,
   },
-  password: {
-    type: Sequelize.STRING,
-    unique: true,
+  isVerify: {
+    type: String,
+    allowNull: true,
+    default: true,
+  },
+  startDate: {
+    type: Date,
+    required: true,
+    default: Date.now,
   },
 });
+
+const Register = mongoose.model("Register", RegisterSchema);
 
 module.exports = Register;
