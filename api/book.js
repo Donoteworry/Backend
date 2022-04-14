@@ -17,7 +17,8 @@ exports.getBookList = async (req, res) => {
 };
 
 exports.getBookById = async (req, res) => {
-  Book.findOne({ _id: req.body.id })
+  console.log(req.params);
+  Book.findOne({ _id: req.params.bookId })
     .then((response) => {
       res.status(200).json({ message: response });
     })
@@ -26,7 +27,7 @@ exports.getBookById = async (req, res) => {
     });
 };
 exports.getBookAutherById = async (req, res) => {
-  BookAuther.findOne({ bookId: req.body.bookId })
+  BookAuther.findOne({ bookId: req.params.bookId })
     .then((response) => {
       res.status(200).json({ message: response });
     })
@@ -39,7 +40,7 @@ exports.getBookAutherById = async (req, res) => {
 // ====================== private api ==========================
 
 exports.getBookByUser = async (req, res) => {
-  Book.find({ userId: req.body.userId })
+  Book.find({ userId: req.params.userId })
     .then((response) => {
       res.status(200).json({ message: response });
     })
@@ -49,7 +50,7 @@ exports.getBookByUser = async (req, res) => {
     });
 };
 exports.getBookAutherByUser = async (req, res) => {
-  BookAuther.findOne({ bookId: req.body.bookId })
+  BookAuther.findOne({ bookId: req.params.bookId })
     .then((response) => {
       res.status(200).json({ message: response });
     })

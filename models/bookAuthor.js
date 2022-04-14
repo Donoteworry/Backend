@@ -7,8 +7,8 @@ const BookAutherSchema = new mongoose.Schema({
     allowNull: false,
     primaryKey: true,
   },
-  bookdId: {
-    type: Number,
+  bookId: {
+    type: String,
     allowNull: true,
   },
   AutherImage: {
