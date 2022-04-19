@@ -19,6 +19,10 @@ const RegisterSchema = new mongoose.Schema({
     type: String,
     allowNull: true,
   },
+  password: {
+    type: String,
+    allowNull: true,
+  },
   isVerify: {
     type: String,
     allowNull: true,

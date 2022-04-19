@@ -5,16 +5,21 @@ var bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const db = mongoose.connection;
 const Routes = require("./api/index");
+const cors = require('cors')
+
 
 mongoose.connect(
-  "mongodb+srv://localhost:localhost@cluster0.vj3ny.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    if (!err) console.log("db connected");
-    else console.log("db error");
-  }
+	"mongodb+srv://localhost:localhost@cluster0.vj3ny.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+	{ useNewUrlParser: true, useUnifiedTopology: true },
+	(err) => {
+		if (!err) console.log("db connected");
+		else console.log("db error");
+	}
 );
+app.use(cors());
+app.options("*", cors());
 // parse application/x-www-form-urlencoded
+
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
@@ -26,5 +31,5 @@ app.use(Routes);
 // ==================================================================================================================
 
 app.listen(port, () => {
-  console.log(`Now listening on port ${port}`);
+	console.log(`Now listening on port ${port}`);
 });

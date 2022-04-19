@@ -3,15 +3,20 @@ const app = express(); //Instantiate an express app, the main work horse of this
 const Register = require("../models/register");
 
 exports.login = async (req, res) => {
-  Register.exists(req.body)
-    .then((response) => {
-      if (response == null) {
-        res.send({ token_id: response });
-      } else {
-        res.send({ token_id: response._id });
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+	Register.findOne(req.body)
+		.then((response) => {
+			console.log(response);
+			if (response == null) {
+				res.send({ token_id: response });
+			} else {
+				res.send({
+					token_id: response._id,
+					firstname: response.firstname,
+					lastname: response.lastname,
+				});
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 };
