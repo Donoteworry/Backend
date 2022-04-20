@@ -19,6 +19,7 @@
   "homepage": "https://github.com/GoluProject/Backend#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "mariadb": "^3.0.0",
     "mongoose": "^6.2.10",
