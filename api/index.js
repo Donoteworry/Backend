@@ -19,7 +19,7 @@ router.post("/api/editBook", Book.editBook);
 router.post("/api/editAuther", Book.editAuther);
 router.get("/api/bookList", Book.getBookList);
 router.post("/api/book", Book.getBookById);
-router.post("/api/Review", Book.getBookReview);
+router.post("/api/setReviewData", Book.getBookReview);
 
 router.post("/api/bookDetail", Book.getBookByUser);
 router.post("/api/autherDetail", Book.getBookAutherByUser);
